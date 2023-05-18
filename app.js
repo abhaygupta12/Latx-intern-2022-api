@@ -1,7 +1,9 @@
 let express = require("express");
 let app = express();
-const mongo = require("mongodb");
-let mongoClient = mongo.MongoClient;
+// const mongo = require("mongodb");
+// let mongoClient = mongo.MongoClient;
+const { MongoClient } = require("mongodb");
+
 const dotenv = require("dotenv");
 dotenv.config();
 let port = process.env.PORT || 1234;
@@ -13,7 +15,8 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use(cors());
 // let mongoUrl ="mongodb://localhost:27017";
-let mongoUrl = "mongodb+srv://abhay:abhkaze123@cluster0.akvm3.mongodb.net/zomato?retryWrites=true&w=majority";
+let mongoUrl = process.env.MONGODB_URI;
+// let mongoUrl = "mongodb+srv://abhay:abhkaze123@cluster0.akvm3.mongodb.net/zomato?retryWrites=true&w=majority";
 let db;   
 
 
@@ -192,8 +195,9 @@ app.delete("/deleteorder",(req,res)=>{
     })
 })
 
-mongoClient.connect(mongoUrl,(err,connection)=>{
-    if(err) console.log("Error While Connecting");
+MongoClient.connect(mongoUrl,(err,connection)=>{
+    if(err) {console.log("Error While Connecting");
+    return;}
     db = connection.db("zomato");
     app.listen(port,()=>{
         console.log(`Server start at ${port}`);

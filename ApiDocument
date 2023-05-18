@@ -1,6 +1,7 @@
 Page 1
 1. list of city
     > http://localhost:4321/location
+    https://latx-intern-zomato-api.herokuapp.com/location
 2. list of restro
     >http://localhost:4321/restro
 
@@ -9,6 +10,7 @@ Page 1
 
 4. quicksearch( categories )
     > http://localhost:4321/mealtype
+    https://latx-intern-zomato-api.herokuapp.com/mealType
 
 Page 2
 1. restro wrt quicksearch

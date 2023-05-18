@@ -32,7 +32,7 @@ app.get("/location",(req,res)=>{
 
 
 // get a data for restro and restro wrt to city 
-app.get("/restro",(req,res)=>{
+app.get("/restro",(req,res)=>{ 
     let stateId = Number(req.query.state_id);
     let mealID = Number(req.query.meal_id);
     let query = {};
